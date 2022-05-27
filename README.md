@@ -4,6 +4,9 @@
 ## ERD
 ![ERD](wireframe.png)
 
+## API
+* https://api.jikan.moe/v4/anime?q=boruto
+
 
 | VERB | URL pattern | Action \(CRUD\) | Description |
 | :--- | :--- | :--- | :--- |
