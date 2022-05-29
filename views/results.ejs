@@ -1,0 +1,10 @@
+<h1>You have just searched:</h1>
+
+<ul>
+    <% anime.forEach(anime => {%>
+        <li><a href='/anime/detail?id=<%=anime.mal_id%>'><%=anime.title%></a></li>
+    <%})%>
+</ul>
+
+
+

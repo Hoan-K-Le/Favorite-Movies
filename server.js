@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const db = require('./models')
 const cryptoJS = require('crypto-js')
 const axios = require('axios')
+const { response } = require('express')
 
 // app config
 const PORT = process.env.PORT || 3000
@@ -68,17 +69,39 @@ app.get('/browse', (req,res) => {
   res.render('browse.ejs')
 })
 
-app.get('/results', async (req,res) => {
-  const url = `https://api.jikan.moe/v4/anime?q=${req.query.userInput}`
-  response = await axios.get(url)
-  console.log(response.data)
+app.get('/anime', async (req,res) => {
+  try {
+    const searchURL = `https://api.jikan.moe/v4/anime?q=${req.query.animeSearch}&sfw`
+    
+   const response = await axios.get(searchURL)
+    console.log(response.data)
+    res.render('results.ejs', {anime: response.data.data})
+    // res.send('hi')
+
+  } catch(err) {
+    console.warn(err)
+  }
   
 })
+
+app.get('/anime/detail', async (req,res) => {
+  try {
+    const idURL = `https://api.jikan.moe/v4/anime?q=${req.params.id}&sfw`
+    const response = await axios.get(idURL)
+    // console.log(response)
+    res.render('details.ejs', {anime: response.data.data})
+    // res.send('hi')
+  } catch {
+    console.warn(err)
+  }
+})
+
 
 // 404 ERROR HANDLER -- NEEDS TO GO LAST
 // app.get('/*'), (req,res) => {
 //   // render your 404 template
 // }
+
 
 app.use((req,res,next) => {
   // render a 404 template
