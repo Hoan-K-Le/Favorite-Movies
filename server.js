@@ -5,6 +5,7 @@ const rowdy = require('rowdy-logger')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const cryptoJS = require('crypto-js')
+const axios = require('axios')
 
 // app config
 const PORT = process.env.PORT || 3000
@@ -57,11 +58,22 @@ app.use(async (req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  console.log(res.locals)
+  // console.log(res.locals)
   res.render('index.ejs')
 })
 
 app.use('/users', require('./controllers/users'))
+
+app.get('/browse', (req,res) => {
+  res.render('browse.ejs')
+})
+
+app.get('/results', async (req,res) => {
+  const url = `https://api.jikan.moe/v4/anime?q=${req.query.userInput}`
+  response = await axios.get(url)
+  console.log(response.data)
+  
+})
 
 // 404 ERROR HANDLER -- NEEDS TO GO LAST
 // app.get('/*'), (req,res) => {
@@ -77,7 +89,7 @@ app.use((req,res,next) => {
 // needs to have all 4 params
 app.use((error, req, res, next) => {
   // log the error
-  console.log(error)
+  // console.log(error)
   // send a 500 error template
   res.status(500).render('500.ejs')
 })

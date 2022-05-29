@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 
 
 // GET /users/new -- renders a form to create a new user
-router.get('/new', (req,res) => {
+router.get('/signup', (req,res) => {
     res.render('users/new.ejs', {msg: null})
 })
 
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
         const foundUser = await db.user.findOne({
             where: {email: req.body.email }
         })
-        const msg = 'bad login credentials, you are not authenticated!'
+        const msg = 'Wrong username/password! Try Again!'
         // if the user is not found -- display the login form and give them a message
         if (!foundUser) {
             console.log('email not found on login')

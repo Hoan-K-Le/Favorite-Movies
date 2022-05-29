@@ -4,6 +4,18 @@
 ## ERD
 ![ERD](wireframe.png)
 
+sequelize model:create --name comment --attributes comment:text,userId:integer,animeId:integer
+
+sequelize model:create --name userAnime --attributes userId:integer,animeId:integer,favorite:string
+
+sequelize model:create --name anime --attributes title:string,name:string,userId:integer,animeId:integer
+
+
+
+
+
+
+
 ## API
 * https://api.jikan.moe/v4/anime?q=boruto
 
