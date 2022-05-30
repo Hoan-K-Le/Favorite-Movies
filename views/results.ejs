@@ -1,10 +1,14 @@
+<a href="/users/profile">Profile</a>
 <h1>You have just searched:</h1>
 
 <ul>
     <% anime.forEach(anime => {%>
-        <li><a href='/anime/detail?id=<%=anime.mal_id%>'><%=anime.title%></a></li>
+        <li><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
+        <img src="<%=anime.images.jpg.large_image_url%>"/></li>
     <%})%>
 </ul>
+
+
 
 
 

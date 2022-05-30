@@ -1,1 +1,15 @@
-<%anime.title%>
+<a href='/browse'>Browse</a> <a href="/users/profile">Profile</a>
+
+<% const {title,episodes,rating, synopsis, images, status, duration, background } = anime %> 
+<h1><%= title %></h1>
+<img src="<%=images.jpg.large_image_url%>"/>
+<p><b>Episode: </b><%=episodes%></p>
+<p><b>Duration: </b> <%=duration %></p>
+<p><b>Rating: </b><%=rating %></p>
+<p><b>Synopsis: </b><%=synopsis%></p>
+<p><b>Background: </b></b><%=background%></p>
+<p><b>Status: </b> </b><%= status  %>  </p>
+
+
+
+
