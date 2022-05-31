@@ -12,27 +12,35 @@ router.get('/', async (req,res) => {
      const response = await axios.get(searchURL)
      const anime = response.data.data
      // destructoring array into variables
-    //  const [a] = anime
-    //  console.log(a)
-  
-      // console.log(response.data)
-      res.render('results.ejs', {anime})
-      // res.send('hi')
-  
+    //  const [a] = anime 
+    
+    res.render('results.ejs', {anime})
+      
     } catch(err) {
       console.warn(err)
     }
     
   })
   
+  // POST /anime -- Create new saved
+  // router.post('/', async (req, res) => {
+  //   await db.userAnime.create({
+  //     title: req.body.title,
+  //     mal_id: req.body.mal_id
+  //   })
+  //   res.redirect('/users/profile')
+  // })
+  
+  
   router.get('/:id', async (req,res) => {
     try {
+      
       // console.log(req.params.id)
       const idURL = `https://api.jikan.moe/v4/anime/${req.params.id}`
       // const idURL = `https://api.jikan.moe/v4/anime?i=${req.params.id}`
       const response = await axios.get(idURL)
       const anime = response.data.data
-      // console.log(anime)
+      console.log(anime)
       // const animeDetails = Object.entries()
       // console.log(idURL)
       res.render('details.ejs', {anime})
@@ -41,5 +49,7 @@ router.get('/', async (req,res) => {
       console.warn(err)
     }
   })
+  
+
 
   module.exports = router

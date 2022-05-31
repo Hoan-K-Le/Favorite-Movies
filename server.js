@@ -66,7 +66,7 @@ app.get('/', (req, res) => {
 app.use('/users', require('./controllers/users'))
 app.use('/anime', require('./controllers/anime'))
 
-app.get('/browse', (req,res) => {
+app.get('/search', (req,res) => {
   res.render('browse.ejs')
 })
 

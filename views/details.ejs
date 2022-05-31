@@ -1,7 +1,8 @@
-<a href='/browse'>Browse</a> <a href="/users/profile">Profile</a>
+<a href='/search'>Search</a> <a href="/users/profile">Profile</a>
 
-<% const {title,episodes,rating, synopsis, images, status, duration, background } = anime %> 
+<% const {title,episodes,rating, synopsis, images, status, duration, background, mal_id } = anime %> 
 <h1><%= title %></h1>
+<p><%=mal_id %></p>
 <img src="<%=images.jpg.large_image_url%>"/>
 <p><b>Episode: </b><%=episodes%></p>
 <p><b>Duration: </b> <%=duration %></p>
@@ -9,6 +10,14 @@
 <p><b>Synopsis: </b><%=synopsis%></p>
 <p><b>Background: </b></b><%=background%></p>
 <p><b>Status: </b> </b><%= status  %>  </p>
+
+<form method="POST" action="/users/profile">
+    <input hidden value="<%=title%>" name="title"/>
+    <input hidden value="<%=mal_id%>" name="mal_id"/>
+    
+    <button type="submit">Save this anime</button>
+
+</form>
 
 
 

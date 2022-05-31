@@ -87,14 +87,33 @@ router.get('/logout', (req,res) => {
     res.redirect('/')
 })
 
-router.get('/profile', (req,res) => {
+router.get('/profile', async (req,res) => {
     // check if user is authorized 
-    if (!res.locals.user) {
-        // if the user is not authorized, ask them to log in
-        res.render('users/login.ejs', {msg: 'please log in to continue'})
-        return // end the route here
+    try {
+        
+        const saveAnime = await db.userAnime.findAll()
+        
+        if (!res.locals.user) {
+            // if the user is not authorized, ask them to log in
+            res.render('users/login.ejs', {msg: 'please log in to continue'})
+            return // end the route here
+        }
+        res.render('users/profile', { user:res.locals.user, saveAnime })
+    } catch(err) {
+        console.warn(err)
     }
-    res.render('users/profile', { user: res.locals.user })
+})
+
+router.post('/profile', async (req,res) => {
+    console.log(res.locals.user, "hello!")
+    await db.userAnime.findOrCreate({
+        where: {
+            userId: res.locals.user.dataValues.id,
+            animeId: req.body.mal_id
+        }
+      })
+      res.redirect('/users/profile')
 })
 
 module.exports = router
+
