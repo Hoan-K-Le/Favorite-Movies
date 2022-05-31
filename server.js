@@ -64,47 +64,14 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', require('./controllers/users'))
+app.use('/anime', require('./controllers/anime'))
 
 app.get('/browse', (req,res) => {
   res.render('browse.ejs')
 })
 
-app.get('/anime', async (req,res) => {
-  try {
-    const searchURL = `https://api.jikan.moe/v4/anime?q=${req.query.animeSearch}&sfw`
-    
-   const response = await axios.get(searchURL)
-   const anime = response.data.data
-   // destructoring array into variables
-  //  const [a] = anime
-  //  console.log(a)
 
-    // console.log(response.data)
-    res.render('results.ejs', {anime})
-    // res.send('hi')
 
-  } catch(err) {
-    console.warn(err)
-  }
-  
-})
-
-app.get('/anime/:id', async (req,res) => {
-  try {
-    // console.log(req.params.id)
-    const idURL = `https://api.jikan.moe/v4/anime/${req.params.id}`
-    // const idURL = `https://api.jikan.moe/v4/anime?i=${req.params.id}`
-    const response = await axios.get(idURL)
-    const anime = response.data.data
-    // console.log(anime)
-    // const animeDetails = Object.entries()
-    // console.log(idURL)
-    res.render('details.ejs', {anime})
-    // res.send('hi')
-  } catch(err) {
-    console.warn(err)
-  }
-})
 
 
 

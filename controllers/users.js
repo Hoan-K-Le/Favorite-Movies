@@ -13,7 +13,7 @@ router.get('/signup', (req,res) => {
 
 // POST /users -- creates a new user and redirect to index
 
-router.post('/', async (req,res) => {
+router.post('/signup', async (req,res) => {
     try {
         // try to create the user
         // TODO: hash password
