@@ -34,6 +34,10 @@ router.get('/', async (req,res) => {
   
   router.get('/:id', async (req,res) => {
     try {
+      const userDb = await db.user.findOne({
+        where: {id: req.params.id},
+        include: [db.anime, db.comment]
+      })
      
       // console.log(req.params.id)
       const idURL = `https://api.jikan.moe/v4/anime/${req.params.id}`
@@ -43,23 +47,28 @@ router.get('/', async (req,res) => {
       console.log(anime)
       // const animeDetails = Object.entries()
       // console.log(idURL)
-      res.render('details.ejs', {anime})
+      res.render('details.ejs', {anime, ani: userDb})
       // res.send('hi')
     } catch(err) {
       console.warn(err)
     }
   })
 
-  // router.put('/:id', async (req, res) => {
-  //   try {
-  //     const userDb = await db.user.findOne({
-  //       where: {id: req.params.id},
-  //       include: [db.comment, db.anime]
-  //     })
-  //   } catch (err) {
-  //     console.warn(err)
-  //   }
-  // })
+
+  router.post('/:id', async (req,res) => {
+    try {
+      const animeCom = await db.comment.create({
+        comment: req.body.comment,
+        animeId: req.params.id,
+        userId: res.locals.user.dataValues.id
+      })
+        
+      console.log(animeCom)
+        res.redirect(`/anime/${req.params.id}`)
+    } catch(err) {
+      console.warn(err)
+    }
+  })
 
 
 

@@ -1,8 +1,9 @@
 <a href='/search'>Search</a> <a href="/users/profile">Profile</a>
 
-<% const {title,episodes,rating, synopsis, images, status, duration, background, mal_id } = anime %> 
+<% const {title,episodes,rating, synopsis, images, status, duration, background, mal_id, comment } = anime %> 
 
 
+<p><%=comment%></p>
 <h1><%= title %></h1>
 <img src="<%=images.jpg.large_image_url%>"/>
 <p><b>Episode: </b><%=episodes%></p>
@@ -12,20 +13,26 @@
 <p><b>Background: </b></b><%=background%></p>
 <p><b>Status: </b> </b><%= status  %>  </p>
 
-<form method="POST" action="/users/profile">
+<form method="POST" action="/users/profile/?_method=PUT">
     <input hidden value="<%=title%>" name="title"/>
     <input hidden value="<%=mal_id%>" name="mal_id"/>
     <button type="submit">Save this anime</button>
-    
-    
-    <form >
-        <label for="create">Create comment</label>
-        <input type="text" name="content" id="create"/>
-        <button type="submit">submit</button>
-    </form>
-
 </form>
+    
+    
+    <!-- <form method="POST" action="/anime/:id/?_method=PUT">
+        <label for="create">Create comment</label>
+        <input type="text" name="comment" id="create"/>
+        <button type="submit">submit</button>
+    </form> -->
+    
+    
 
 
+    <form method="POST" action="/anime/<%=mal_id%>">
+            <label for="create">Create comment</label>
+            <input type="text" name="comment" id="create"/>
+            <button type="submit">submit</button>
+        </form>
 
 
