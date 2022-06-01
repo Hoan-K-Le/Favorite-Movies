@@ -1,9 +1,8 @@
 <a href='/search'>Search</a> <a href="/users/profile">Profile</a>
 
-<% const {title,episodes,rating, synopsis, images, status, duration, background, mal_id, comment } = anime %> 
+<% const {title,episodes,rating, synopsis, images, status, duration, background, mal_id} = anime %> 
 
 
-<p><%=comment%></p>
 <h1><%= title %></h1>
 <img src="<%=images.jpg.large_image_url%>"/>
 <p><b>Episode: </b><%=episodes%></p>
@@ -26,12 +25,22 @@
         <button type="submit">submit</button>
     </form> -->
     
+  <h2>Comments:</h2>
+
+  <%animeComment.forEach(comment => {%>
+    <p><%=comment.comment%></p>
+    <p><b><%=comment.user.email%></b></p>
+    <form method="POST" action="/anime/<%=mal_id%>/?_method=DELETE">
+        <input hidden value="<%=anime.id%>" name="id"/>
+        <button type="submit">Delete</button>
+    </form>
+  <%})%>
     
 
 
     <form method="POST" action="/anime/<%=mal_id%>">
             <label for="create">Create comment</label>
-            <input type="text" name="comment" id="create"/>
+            <textarea type="text" row="5" column="10" name="comment" id="create"></textarea>
             <button type="submit">submit</button>
         </form>
 
