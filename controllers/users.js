@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require('../models')
 const cryptoJS = require('crypto-js')
 const bcrypt = require('bcryptjs')
+const methodOverride = require('method-override')
 
 
 
@@ -91,7 +92,11 @@ router.get('/profile', async (req,res) => {
     // check if user is authorized 
     try {
         
-        const saveAnime = await db.userAnime.findAll()
+        const saveAnime = await db.anime.findAll({
+            where: {
+                userId: res.locals.user.dataValues.id
+            }
+        })
         
         if (!res.locals.user) {
             // if the user is not authorized, ask them to log in
@@ -105,15 +110,44 @@ router.get('/profile', async (req,res) => {
 })
 
 router.post('/profile', async (req,res) => {
-    console.log(res.locals.user, "hello!")
-    await db.userAnime.findOrCreate({
-        where: {
-            userId: res.locals.user.dataValues.id,
-            animeId: req.body.mal_id
-        }
-      })
-      res.redirect('/users/profile')
+    // console.log(res.locals.user, "hello!")
+    
+    try {
+
+        const [foundOrCreatedAnime, createdAnime] = await db.anime.findOrCreate({
+            where: {
+                userId: res.locals.user.dataValues.id,
+                animeId: req.body.mal_id,  
+            },
+            defaults: {
+                title: req.body.title
+            }
+        })
+        const foundUser = await db.user.findByPk(res.locals.user.dataValues.id)
+          foundUser.addAnime(foundOrCreatedAnime)
+        // foundOrCreatedAnime.addUser(foundUser)
+          res.redirect('/users/profile')
+
+    } catch(err) {
+        console.warn(err)
+    }
 })
+
+router.delete('/profile', async (req,res) => {
+    try {
+        const deletion = await db.anime.findOne({
+            where: {
+                id: req.body.id
+            }
+        })
+        await deletion.destroy()
+        res.redirect('/users/profile')
+    } catch (err) {
+        console.warn(err)
+    }
+})
+
+
 
 module.exports = router
 

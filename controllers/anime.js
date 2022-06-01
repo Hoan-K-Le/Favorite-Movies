@@ -34,7 +34,7 @@ router.get('/', async (req,res) => {
   
   router.get('/:id', async (req,res) => {
     try {
-      
+     
       // console.log(req.params.id)
       const idURL = `https://api.jikan.moe/v4/anime/${req.params.id}`
       // const idURL = `https://api.jikan.moe/v4/anime?i=${req.params.id}`
@@ -49,7 +49,18 @@ router.get('/', async (req,res) => {
       console.warn(err)
     }
   })
-  
+
+  // router.put('/:id', async (req, res) => {
+  //   try {
+  //     const userDb = await db.user.findOne({
+  //       where: {id: req.params.id},
+  //       include: [db.comment, db.anime]
+  //     })
+  //   } catch (err) {
+  //     console.warn(err)
+  //   }
+  // })
+
 
 
   module.exports = router
