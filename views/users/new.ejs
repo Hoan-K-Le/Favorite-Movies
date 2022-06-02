@@ -1,16 +1,29 @@
 <link rel="stylesheet" href="../css/style.css"/>
-<% if (msg) {%>
-    <div>
-        <p><%=msg%></p>
+<div class="container myFlexZone d-flex flex-column justify-content-center align-items-center">
+
+    
+    <% if (msg) {%>
+        <div>
+            <p><%=msg%></p>
+        </div>
+        <%}%>
+        
+        <h3>ITS TIME TO SIGN UP</h3>
+        <form action="/users/signup" method="POST" class="d-flex flex-column w-25 form-control">
+            <div class="form-floating mb-3">
+                <input id="email" type="email" name="email" class="form-control" placeholder="Enter your email" required/>
+                <label for="email">Email:</label>
+            </div>
+                
+            <div class="mb-3 form-floating">
+                <input id="password" type="password" name="password" class="form-control" placeholder="Enter your password" required/>
+                <label for="password">Password:</label>
+            </div>
+                
+
+            <button type="submit" class="btn btn-primary">Sign up!</button>
+            
+        </form>
+
+
     </div>
-<%}%>
-
-<form action="/users/signup" method="POST">
-<label for="email">Email:</label>
-<input id="email" type="email" name="email" placeholder="Enter your email" required/>
-
-<label for="password">Password:</label>
-<input id="password" type="password" name="password" placeholder="Enter your password" required/>
-
-<button type="submit">Sign up!</button>
-</form>
