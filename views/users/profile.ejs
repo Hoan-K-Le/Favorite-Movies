@@ -1,22 +1,28 @@
 <link rel="stylesheet" href="../css/style.css"/>
 <a href="/users/logout">Log Out</a>
 <a href="/search">Search</a>
-<h2>Profile Page!   </h2>
 
+<div id="profilePage">
 
-
-<h3>Welcome to AniSearch <%=user.email%>!</h3>
-<h3>Links:</h3>
-<% saveAnime.forEach(anime => {%>
-<ul>
-   <li>
-       <a href='/anime/<%=anime.animeId%>'><%=anime.title%></a>
-       <form method="POST" action="/users/profile/?_method=DELETE">
-           <input hidden value="<%=anime.id%>" name="id"/>
-           <button type="submit">Delete</button>
-       </form>
-   </li> 
-
-</ul>    
-<%})%>
-
+    
+    <!-- <h2><b>Profile Page!</b></h2> -->
+    
+    
+    
+    <h3><b>Welcome to AniSearch <%=user.email%>!</b></h3>
+    <h3><b>Links:</b></h3>
+    <% saveAnime.forEach(anime => {%>
+        <ul>
+            <li>
+                <a href='/anime/<%=anime.animeId%>'><%=anime.title%></a>
+                <form method="POST" action="/users/profile/?_method=DELETE">
+                    <input hidden value="<%=anime.id%>" name="id"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </li> 
+            
+        </ul>    
+        <%})%>
+        
+        
+    </div>

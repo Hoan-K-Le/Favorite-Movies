@@ -5,13 +5,13 @@
         
         <% if (msg) {%>
             <div>
-                <p><%=msg%></p>
+                <p class="msgClass"><%=msg%></p>
             </div>
             <%}%>
             
             
             
-        <p>Guest Username: w@w and password:123</p>
+        <p class="pLoginClass"><b>Guest Username: w@w and password:123</b></p>
         
         <form action="/users/login" method="POST" class="d-flex flex-column w-25 form-control">
             
@@ -29,6 +29,8 @@
             
             
             <button type="submit" class="btn btn-primary">Login!</button>
+            <p>Don't have an account? <a href="/users/signup" style="text-decoration: none;">Signup</a></p>
+            
             
         </form>
         
