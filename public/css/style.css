@@ -1,3 +1,27 @@
 .myFlexZone {
     height: 80vh;
 }
+
+#loginBody {
+    background-image: url();
+    height: 100vh;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+@media (min-width: 992px) {
+    #loginBody {
+      margin-top: -58.59px;
+    }
+  }
+
+  #homePage {
+      /* background-image: url('https://img.freepik.com/free-vector/perspective-japanese-street-neon-lights_52683-44988.jpg?w=2000'); */
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvL5KtvACJFNM5yaW_F--0N9hPquyGqV518Q&usqp=CAU');
+      /* background-repeat: no-repeat; */
+      height: 100vh;
+  }
+
+  .indexH2{
+      color: hotpink;
+  }
+  
