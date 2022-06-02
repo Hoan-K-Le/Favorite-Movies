@@ -1,16 +1,40 @@
 <link rel="stylesheet" href="../css/style.css"/>
-<% if (msg) {%>
-    <div>
-        <p><%=msg%></p>
+<div class="container myFlexZone d-flex flex-column justify-content-center align-items-center">
+
+    <% if (msg) {%>
+        <div>
+            <p><%=msg%></p>
+        </div>
+        <%}%>
+        
+        
+        
+        <p>Guest Username: w@w and password:123</p>
+        
+        <form action="/users/login" method="POST" class="d-flex flex-column w-25 form-control">
+            
+            <div class="form-floating mb-3">
+                <input id="email" type="email" name="email" class="form-control"  placeholder="Enter your email" required/>
+                <label for="email" class="form-label">Email:</label>
+                
+            </div>
+            
+            
+            <div class="mb-3 form-floating">
+                <input id="password" type="password"  name="password" class="form-control" placeholder="Enter your password" required/>
+                <label for="password" class="form-label">Password:</label>
+            </div>
+            
+            
+            <button type="submit" class="btn btn-primary">Login!</button>
+            
+        </form>
+        
+        
+        
     </div>
-<%}%>
-<p>Guest Username: w@w and password:123</p>
-<form action="/users/login" method="POST">
-<label for="email">Email:</label>
-<input id="email" type="email" name="email" placeholder="Enter your email" required/>
 
-<label for="password">Password:</label>
-<input id="password" type="password" name="password" placeholder="Enter your password" required/>
 
-<button type="submit">Login!</button>
-</form>
+
+
+
