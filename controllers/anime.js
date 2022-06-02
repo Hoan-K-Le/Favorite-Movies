@@ -9,7 +9,7 @@ router.get('/', async (req,res) => {
   setTimeout(async () => {
 
     try {
-      const searchURL = `https://api.jikan.moe/v4/anime?q=${req.query.animeSearch}&sfw`
+      const searchURL = `https://api.jikan.moe/v4/anime?q=${req.query.animeSearch}`
       
      const response = await axios.get(searchURL)
      const anime = response.data.data
@@ -136,9 +136,6 @@ router.get('/', async (req,res) => {
       console.warn(err)
     }
   })
-
-
-
 
 
   module.exports = router

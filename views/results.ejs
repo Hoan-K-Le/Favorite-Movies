@@ -1,12 +1,13 @@
 <a href="/users/profile">Profile</a>
 <a href="/search">Search</a>
+<a href="/users/logout">Log Out</a>
 <h1>You have just searched:</h1>
 
 
 <ul>
     <% anime.forEach(anime => {%>
         <li><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
-        <img src="<%=anime.images.jpg.small_image_url%>"/></li>
+        <img src="<%=anime.images.jpg.large_image_url%>"/></li>
     <%})%>
 </ul>
 
