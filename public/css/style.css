@@ -31,12 +31,38 @@
       /* background-repeat: no-repeat; */
   }
 
+  #signUpBackground {
+      background-image: url('https://pm1.narvii.com/5875/ba6d306fa6a7d174110dfbc87ed310f142f5ba8b_hq.jpg');
+      height: 100vh;
+      background-size: cover;
+  }
+
   .indexH2{
       /* color: hotpink; */
       position:relative;
       -webkit-text-stroke: 0.3vw #383d52;
       text-transform: uppercase;
   }
+  .animateSignUp {
+      color: rgb(0, 191, 255);
+      /* position: relative;
+      -webkit-text-stroke: 0.3vw #383d52;
+      text-transform: uppercase; */
+  }
+
+  /* .animateSignUp::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    color: lightblue;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid lightblue;
+    overflow: hidden;
+    animation: animate 4s linear infinite;
+  } */
 
   .indexH2::before {
       content: attr(data-text);
@@ -58,7 +84,7 @@
       }
       70%, 100%
       {
-        width: 100%;
+        width: 110%;
       }
   }
 
@@ -71,4 +97,6 @@
       color: red;
   }
 
+
+  
   
