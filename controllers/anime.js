@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs')
 const axios = require('axios')
 
 router.get('/', async (req,res) => {
+  setTimeout(async () => {
+
     try {
       const searchURL = `https://api.jikan.moe/v4/anime?q=${req.query.animeSearch}&sfw`
       
@@ -20,6 +22,7 @@ router.get('/', async (req,res) => {
       console.warn(err)
     }
     
+  }, 600)
   })
   
   // POST /anime -- Create new saved
@@ -38,6 +41,8 @@ router.get('/', async (req,res) => {
         where: {animeId: req.params.id},
         include: [db.user]
       })
+
+      // console.log(animeComment[0].dataValues.user.id)
       
       // console.log(req.params.id)
       const idURL = `https://api.jikan.moe/v4/anime/${req.params.id}`
@@ -56,6 +61,7 @@ router.get('/', async (req,res) => {
 
 
   router.post('/:id', async (req,res) => {
+
     try {
       const animeCom = await db.comment.create({
         comment: req.body.comment,
@@ -72,7 +78,7 @@ router.get('/', async (req,res) => {
 
   router.delete('/:id', async (req,res) => {
     try {
-      const commentDelete = await db.comment.findOne({
+      const commentDelete = await db.comment.findOne({    
         where: {
           userId: res.locals.user.dataValues.id,
           animeId: req.params.id
@@ -87,8 +93,48 @@ router.get('/', async (req,res) => {
  
   // update the comments with PUT
 
-  router.put('/:id', (req, res) => {
-    // const comment = fs.readFileSync('.')
+  router.get('/edit/:id', async (req, res) => {
+    try {
+      if (!res.locals.user) {
+        res.render('users/login', {msg: 'please log in to continue'})
+        return
+      }
+      const editComment = await db.comment.findOne ({
+        where: {
+          userId: res.locals.user.dataValues.id,
+          animeId: req.params.id
+        }
+      })
+      console.log(editComment)
+      res.render('users/edit', {editComment} )
+    
+
+    } catch(err) {
+      console.warn(err)
+    }
+  })
+
+  router.put('/edit', async (req, res) => {
+    if (!res.locals.user) {
+      res.render('users/login', {msg: 'please log in to continue'})
+      return 
+    }
+    try {
+
+      const findComment = await db.comment.findOne({
+        where: {
+          userId: res.locals.user.id
+
+        }
+      
+      })
+      await findComment.set({comment: req.body.comment})
+      await findComment.save()
+      // console.log(findComment)
+      res.redirect(`/anime/${findComment.animeId}`)
+    }catch(err) {
+      console.warn(err)
+    }
   })
 
 
