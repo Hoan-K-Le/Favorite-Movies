@@ -1,18 +1,23 @@
-<link rel="stylesheet" href="../css/style.css"/>
-<nav class="nav navbar-expand-lg bg-light d-flex justify-content-right">
-    
-    <div class="container-fluid form-control">
+<link rel="stylesheet" href="/css/style.css"/>
+<div id="editBackground">
+
+    <nav class="nav navbar-expand-lg bg-info d-flex justify-content-center">
         
-        <a class="navbar-brand" href="/users/logout">Log Out</a>
-        <a class="navbar-brand" href="/search">Search</a>
+        <p class="navbar-brand p-1">AniSearch</p>
+        
+        <a class="navbar-brand p-1" href="/users/logout">Log Out</a>
+        <a class="navbar-brand p-1" href="/search">Search</a>
+    </nav>
     
+    <!-- the page where you edit the comment and update it -->
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
+        
+        
+        <h1 class="h1Color">Edit your comment!</h1>
+        <form method="POST" class="d-flex flex-column w-25 form-control text-center" action="/anime/edit/?_method=PUT">
+            <input type="text" class="form-control text-center" name="comment" placeholder="Edit here!" />
+            <input type="text" class="form-control" hidden value="<%= editComment.animeId %>" name="id"/>
+            <button type="submit">Edit</button>
+        </form>
     </div>
-</nav>
-
-<!-- the page where you edit the comment and update it -->
-
-<h1>edit process</h1>
-<form method="POST" action="/anime/edit/?_method=PUT">
-    <input type="text" name="comment"/>
-        <button type="submit">Edit</button>
-</form>
+</div>

@@ -124,7 +124,8 @@ router.get('/', async (req,res) => {
     // Finds the comment to edit
     const findComment = await db.comment.findOne({
       where: {
-        userId: res.locals.user.dataValues.id
+        userId: res.locals.user.dataValues.id,
+        animeId: req.body.id
       }
       
       })

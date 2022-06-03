@@ -1,9 +1,18 @@
-<a href='/search'>Search</a> <a href="/users/profile">Profile</a>
+<nav class="nav navbar-expand-lg  bg-light d-flex justify-content-center">
+   
+        
+    
+  
+    
+    <!-- <div class="container-fluid form-control"> -->
+<a class="navbar-brand p-2" href='/search'>Search</a> <a class="navbar-brand p-2" href="/users/profile">Profile</a> <a class="navbar-brand p-2" href="/users/logout">Log Out</a>
+
+</nav>
 
 <% const {title,episodes,rating, synopsis, images, status, duration, background, mal_id} = anime %> 
 
 
-<h1><%= title %></h1>
+<h1><%=title %></h1>
 <img src="<%=images.jpg.large_image_url%>"/>
 <p><b>Episode: </b><%=episodes%></p>
 <p><b>Duration: </b> <%=duration %></p>
@@ -17,13 +26,11 @@
     <input hidden value="<%=mal_id%>" name="mal_id"/>
     <button type="submit">Save Anime!</button>
 </form>
-    
 
-   
-    
-  <h2>Comments:</h2>
-    <!-- for eacu to generate comments -->
-  <%animeComment.forEach(comment => {%>
+
+
+<!-- for eac to generate comments -->
+<%animeComment.forEach(comment => {%>
     <p><%=comment.comment%></p>
     <p><b><%=comment.user.email%></b></p>
     
@@ -34,8 +41,8 @@
             <button type="submit">Delete</button>
             <%}%>
         </form>
-
-
+        
+        
         <!-- editing -->
         <form method="GET" action="/anime/edit/<%= mal_id %>">
             <input hidden type="number" value="<%= comment.id %>" name="id"/>
@@ -48,12 +55,15 @@
             
             <%})%>
             
-            <!-- creating a comment -->
+            <!-- <div class=" flex-column d-flex justify-content-center align-items-center"> -->
+                
+                <!-- creating a comment -->
+            <form method="POST" class="d-flex flex-column w-25 form-control" action="/anime/<%=mal_id%>">
+                
             
-            <form method="POST" action="/anime/<%=mal_id%>">
-                    <label for="create">Create Comment</label>
-                    <textarea type="text" row="5" column="10" name="comment" id="create"></textarea>
-                    <button type="submit">submit</button>
+                <input type="text" class="form-control" name="comment" id="create"/>
+                <label for="create">Create Comment</label>
+                <button type="submit">submit</button>
                 </form>
-        
-            
+                  
+            <!-- </div> -->
