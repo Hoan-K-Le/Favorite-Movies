@@ -112,6 +112,20 @@
 
   .h1Color {
       color: white
+  }
+
+.resultBackground {
+    background: darkgrey;
+}
+
+.myResult {
+    list-style: none;
+    border-style: solid;
+    color: black;
+    background-color: white;
+    background-image: url('');
+    /* height: 100vh; */
+}
 
 
   

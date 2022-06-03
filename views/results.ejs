@@ -1,47 +1,48 @@
-<nav class="nav navbar-expand-lg bg-light d-flex flex-row-reverse">
-    <div class="container-fluid form-control d-flex flex-wrap">
+<div class="resultBackground">
+
+    <nav class="nav navbar-expand-lg bg-light d-flex justify-content-center">
         
-        <a class="navbar-brand" href="/users/profile">Profile</a>
-        <a class="navbar-brand" href="/search">Search</a>
-        <a class="navbar-brand" href="/users/logout">Log Out</a>
-
-
-    </div>
+        
+        <a class="navbar-brand p-1" href="/users/profile">Profile</a>
+        <a class="navbar-brand p-1" href="/search">Search</a>
+        <a class="navbar-brand p-1" href="/users/logout">Log Out</a>
+        
 </nav>
 
 
+
+<h1 class="text-center">You have just searched:</h1>
+
+<div class="container myResult">
     
-    <h1>You have just searched:</h1>
     
-    <div class="container">
+    <ul>
+        <div class="row row-cols-4">
             
-
-                <ul>
-                    <div class="row row-cols-4">
-
-                        <% anime.forEach(anime => {%>
-                            
-                            
-                            <div class="col">
-
-                                <li class="col"><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
-                                <img class="col" src="<%=anime.images.jpg.image_url%>"/></li>
-                        
-                            </div>
-                            <!-- anime.images.jpg.small_image_url -->
-                            
-                            <%})%>
-                        </div>
-                    </ul>   
-                    
+            <% anime.forEach(anime => {%>
                 
+                
+                <div class="col">
+
+                    <li class="col"><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
+                    <img class="col" src="<%=anime.images.jpg.image_url%>"/></li>
+                    
+                </div>
+                <!-- anime.images.jpg.small_image_url -->
+                
+                <%})%>
+            </div>
+        </ul>   
+        
+        
         
     </div>
-        
     
-
-
-
+    
+</div>
+    
+    
+    
 
 
 
