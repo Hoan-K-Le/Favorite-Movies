@@ -13,18 +13,18 @@
 
 <h1 class="text-center">You have just searched:</h1>
 
-<div class="container myResult">
+<div class="container myResult flex-wrap">
     
     
-    <ul>
+    <ul class="unorderedList ">
         <div class="row row-cols-4">
             
             <% anime.forEach(anime => {%>
                 
                 
-                <div class="col">
+                <div class="col text-center mb-3 flex-wrap">
 
-                    <li class="col"><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
+                    <li class="col"><a class="text-white flex-wrap" href='/anime/<%=anime.mal_id%>'><p class="animeTitle" data-text="<%=anime.title%>"><%=anime.title%><p></a></li>
                     <img class="col" src="<%=anime.images.jpg.image_url%>"/></li>
                     
                 </div>
