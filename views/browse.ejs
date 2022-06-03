@@ -6,16 +6,22 @@
     </div>
     
 </nav>
-
 <div id="searchBackground">
 
-    <form class="container" method="GET" action="/anime">
-        <p class="searchP"><b>Search for your favorite Anime below!</b></p>
-        <label for="search" class="searchP"><b>Search:</b></label>
-        <input id="search" type="text" name="animeSearch"/>
-        <input type="submit"/>
-    </form>
-    
-    
-    
+<div class="container d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
+
+        
+
+            <form class="d-flex flex-column w-25 form-control text-center"  method="GET" action="/anime">
+                <p class="searchP"><b>Search for your favorite Anime below!</b></p>
+                <input id="search" type="text" name="animeSearch" class="form-control" />
+                <label for="search" class="searchP"></label>
+                <br>
+                <button type="submit">Search</button>
+            </form>
+        
+        
+        
+        
+    </div>
 </div>

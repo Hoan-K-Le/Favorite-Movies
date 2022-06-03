@@ -109,7 +109,7 @@ router.get('/profile', async (req,res) => {
     }
 })
 
-router.put('/profile', async (req,res) => {
+router.post('/profile', async (req,res) => {
     // console.log(res.locals.user, "hello!")
     
     try {

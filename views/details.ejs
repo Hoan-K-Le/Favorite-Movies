@@ -12,7 +12,7 @@
 <p><b>Background: </b></b><%=background%></p>
 <p><b>Status: </b> </b><%= status  %>  </p>
 
-<form method="POST" action="/users/profile/?_method=PUT">
+<form method="POST" action="/users/profile">
     <input hidden value="<%=title%>" name="title"/>
     <input hidden value="<%=mal_id%>" name="mal_id"/>
     <button type="submit">Save Anime!</button>
@@ -29,7 +29,7 @@
     
     <!-- Form to delete the comments -->
     <form method="POST" action="/anime/<%=mal_id%>/?_method=DELETE">
-        <input hidden value="<%=anime.id%>" name="id"/>
+        <input hidden value="<%= anime.id %>" name="id"/>
         <%if (comment.dataValues.user.id === user.id){%>
             <button type="submit">Delete</button>
             <%}%>
@@ -37,9 +37,9 @@
 
 
         <!-- editing -->
-        <form method="GET" action="/anime/edit/<%=mal_id%>">
-            <input hidden type="number" value="<%= comment.id%>" name="id"/>
-            <input hidden type="number" value="<%= anime.id %>" name="animeId"/>
+        <form method="GET" action="/anime/edit/<%= mal_id %>">
+            <input hidden type="number" value="<%= comment.id %>" name="id"/>
+            <input hidden type="number" value="<%= anime.id %>" name= "animeId"/>
             <% if (comment.dataValues.user.id === user.id) {%>
                 <button type="submit">Edit</button>
                 

@@ -114,20 +114,18 @@ router.get('/', async (req,res) => {
     }
   })
 
+// Updates the comment
   router.put('/edit', async (req, res) => {
+    try {
     if (!res.locals.user) {
       res.render('users/login', {msg: 'please log in to continue'})
       return 
-    }
-    try {
-      // console.log(req.body)
-      const findComment = await db.comment.findOne({
-        
-        where: {
-          // animeId: req.body.id,
-          userId: res.locals.user.dataValues.id
-         
-        }
+  }
+    // Finds the comment to edit
+    const findComment = await db.comment.findOne({
+      where: {
+        userId: res.locals.user.dataValues.id
+      }
       
       })
       await findComment.set({comment: req.body.comment})
