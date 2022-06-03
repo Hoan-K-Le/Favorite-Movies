@@ -80,15 +80,15 @@ app.get('/search', (req,res) => {
 
 
 // 404 ERROR HANDLER -- NEEDS TO GO LAST
-// app.get('/*'), (req,res) => {
-//   // render your 404 template
-// }
+app.get('/*'), (req,res) => {
+  // render your 404 template
+}
 
 
-// app.use((req,res,next) => {
-//   // render a 404 template
-//   res.status(404).render('404.ejs')
-// })
+app.use((req,res,next) => {
+  // render a 404 template
+  res.status(404).render('404.ejs')
+})
 
 // 500 error handler
 // needs to have all 4 params

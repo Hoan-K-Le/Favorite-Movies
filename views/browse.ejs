@@ -1,9 +1,21 @@
-<a href="/users/logout">Log Out</a> <a href="/users/profile">Profile</a>
-<form class="container" method="GET" action="/anime">
-    <p>Search for your favorite Anime below!</p>
-    <label for="search">Search:</label>
-    <input id="search" type="text" name="animeSearch"/>
-    <input type="submit"/>
-</form>
+<nav class="nav navbar-expand-lg bg-light d-flex justify-content-right">
+    <div class="container-fluid form-control">
 
+        <a class="navbar-brand" href="/users/logout">Log Out</a> 
+        <a class="navbar-brand" href="/users/profile">Profile</a>
+    </div>
+    
+</nav>
 
+<div id="searchBackground">
+
+    <form class="container" method="GET" action="/anime">
+        <p class="searchP"><b>Search for your favorite Anime below!</b></p>
+        <label for="search" class="searchP"><b>Search:</b></label>
+        <input id="search" type="text" name="animeSearch"/>
+        <input type="submit"/>
+    </form>
+    
+    
+    
+</div>

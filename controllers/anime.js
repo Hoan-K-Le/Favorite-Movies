@@ -49,7 +49,7 @@ router.get('/', async (req,res) => {
       // const idURL = `https://api.jikan.moe/v4/anime?i=${req.params.id}`
       const response = await axios.get(idURL)
       const anime = response.data.data
-      console.log(anime)
+      // console.log(anime)
       // const animeDetails = Object.entries()
       // console.log(idURL)
       res.render('details.ejs', {user:res.locals.user, anime, animeComment})
@@ -69,7 +69,7 @@ router.get('/', async (req,res) => {
         userId: res.locals.user.dataValues.id
       })
         
-      console.log(animeCom)
+      // console.log(animeCom)
         res.redirect(`/anime/${req.params.id}`)
     } catch(err) {
       console.warn(err)
@@ -105,7 +105,7 @@ router.get('/', async (req,res) => {
           animeId: req.params.id
         }
       })
-      console.log(editComment)
+      // console.log(editComment)
       res.render('users/edit', {editComment} )
     
 
@@ -120,17 +120,18 @@ router.get('/', async (req,res) => {
       return 
     }
     try {
-
+      // console.log(req.body)
       const findComment = await db.comment.findOne({
+        
         where: {
-          userId: res.locals.user.id
-
+          // animeId: req.body.id,
+          userId: res.locals.user.dataValues.id
+         
         }
       
       })
       await findComment.set({comment: req.body.comment})
       await findComment.save()
-      // console.log(findComment)
       res.redirect(`/anime/${findComment.animeId}`)
     }catch(err) {
       console.warn(err)

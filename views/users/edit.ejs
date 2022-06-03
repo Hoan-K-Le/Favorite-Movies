@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="../css/style.css"/>
+<nav class="nav navbar-expand-lg bg-light d-flex justify-content-right">
+    
+    <div class="container-fluid form-control">
+        
+        <a class="navbar-brand" href="/users/logout">Log Out</a>
+        <a class="navbar-brand" href="/search">Search</a>
+    
+    </div>
+</nav>
+
 <h1>edit process</h1>
 <form method="POST" action="/anime/edit/?_method=PUT">
-    <input  type="text" name="comment"/>
-        <button type="submit">edit</button>
+    <input type="text" name="comment"/>
+        <button type="submit">Edit</button>
 </form>

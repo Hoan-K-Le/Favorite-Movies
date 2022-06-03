@@ -1,17 +1,44 @@
-<a href="/users/profile">Profile</a>
-<a href="/search">Search</a>
-<a href="/users/logout">Log Out</a>
-<h1>You have just searched:</h1>
+<nav class="nav navbar-expand-lg bg-light d-flex justify-content-right">
+    <div class="container-fluid form-control">
+        
+        <a class="navbar-brand" href="/users/profile">Profile</a>
+        <a class="navbar-brand" href="/search">Search</a>
+        <a class="navbar-brand" href="/users/logout">Log Out</a>
 
 
-<ul>
-    <% anime.forEach(anime => {%>
-        <li><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
-        <img src="<%=anime.images.jpg.large_image_url%>"/></li>
-    <%})%>
-</ul>
+    </div>
+</nav>
 
 
+    
+    <h1>You have just searched:</h1>
+    
+    <div class="container">
+            
+
+                <ul>
+                    <div class="row row-cols-4">
+
+                        <% anime.forEach(anime => {%>
+                            
+                            
+                            <div class="col">
+
+                                <li class="col"><a href='/anime/<%=anime.mal_id%>'><%=anime.title%></a></li>
+                                <img class="col" src="<%=anime.images.jpg.image_url%>"/></li>
+                        
+                            </div>
+                            <!-- anime.images.jpg.small_image_url -->
+                            
+                            <%})%>
+                        </div>
+                    </ul>   
+                    
+                
+        
+    </div>
+        
+    
 
 
 

@@ -37,6 +37,11 @@
       background-size: cover;
   }
 
+  #searchBackground {
+      background-image: url('https://thoughtcatalog.com/wp-content/uploads/2021/06/Anime-Pick-Up-Lines.jpeg');
+      height: 100vh;
+  }
+
   .indexH2{
       /* color: hotpink; */
       position:relative;
@@ -84,11 +89,13 @@
       }
       70%, 100%
       {
-        width: 110%;
+        width: 100%;
       }
   }
 
-
+  .searchP {
+      color: lightskyblue;
+  }
   .pLoginClass {
       color: lightskyblue;
   }

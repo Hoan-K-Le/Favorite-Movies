@@ -22,33 +22,38 @@
    
     
   <h2>Comments:</h2>
-
+    <!-- for eacu to generate comments -->
   <%animeComment.forEach(comment => {%>
     <p><%=comment.comment%></p>
     <p><b><%=comment.user.email%></b></p>
+    
+    <!-- Form to delete the comments -->
     <form method="POST" action="/anime/<%=mal_id%>/?_method=DELETE">
         <input hidden value="<%=anime.id%>" name="id"/>
-       <%if (comment.dataValues.user.id === user.id){%>
-         <button type="submit">Delete</button>
-    <%}%>
-    </form>
-
-    <form method="GET" action="/anime/edit/<%=mal_id%>">
-        <input hidden type="number" value="<%= comment.id%>" name="id"/>
-        <input hidden type="number" value="<%= anime.id %>" name="animeId"/>
-        <% if (comment.dataValues.user.id === user.id) {%>
-            <button type="submit">edit</button>
-  
-        <%}%>
-    </form>
-  
-        
- <%})%>
-  
-    <form method="POST" action="/anime/<%=mal_id%>">
-            <label for="create">Create comment</label>
-            <textarea type="text" row="5" column="10" name="comment" id="create"></textarea>
-            <button type="submit">submit</button>
+        <%if (comment.dataValues.user.id === user.id){%>
+            <button type="submit">Delete</button>
+            <%}%>
         </form>
 
 
+        <!-- editing -->
+        <form method="GET" action="/anime/edit/<%=mal_id%>">
+            <input hidden type="number" value="<%= comment.id%>" name="id"/>
+            <input hidden type="number" value="<%= anime.id %>" name="animeId"/>
+            <% if (comment.dataValues.user.id === user.id) {%>
+                <button type="submit">Edit</button>
+                
+                <%}%>
+            </form>
+            
+            <%})%>
+            
+            <!-- creating a comment -->
+            
+            <form method="POST" action="/anime/<%=mal_id%>">
+                    <label for="create">Create Comment</label>
+                    <textarea type="text" row="5" column="10" name="comment" id="create"></textarea>
+                    <button type="submit">submit</button>
+                </form>
+        
+            
