@@ -39,7 +39,6 @@
 
   #searchBackground {
       background-image: url('https://thoughtcatalog.com/wp-content/uploads/2021/06/Anime-Pick-Up-Lines.jpeg');
-      /* background-image: url('https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/158338838/original/56a6c95fe6909338ba872381af39e6bb09cac57b/create-a-anime-background-for-you.png'); */
       height: 100vh;
       background-size: cover;
   }
@@ -79,25 +78,9 @@
       -webkit-text-stroke: 0vw #383d52;
       border-right: 2px solid lightblue;
       overflow: hidden;
-      animation:animate 5s linear infinite;
+      animation: animate 4s linear infinite;
   }
    */
-
-  
-  /* .animateSignUp::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    color: lightblue;
-    -webkit-text-stroke: 0vw #383d52;
-    border-right: 2px solid lightblue;
-    overflow: hidden;
-    animation: animate 4s linear infinite;
-  } */
-
   .indexH2::before {
       content: attr(data-text);
       position: absolute;
@@ -153,6 +136,14 @@
 
 .unorderedList {
     list-style: none;
+}
+
+.detailsPage {
+    position: relative;
+}
+
+.mySecondDetails {
+    position: absolute;
 }
 
 

@@ -13,7 +13,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
         
         
-        <h1 class="h1Color">Edit your comment!</h1>
+        <h1 class="h1Color text-center d-flex flex-column">Make your edit!</h1>
         <form method="POST" class="d-flex flex-column w-25 form-control text-center" action="/anime/edit/?_method=PUT">
             <input type="text" class="form-control text-center" name="comment" placeholder="Edit here!" />
             <input type="text" class="form-control" hidden value="<%= editComment.animeId %>" name="id"/>
