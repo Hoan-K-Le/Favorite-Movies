@@ -20,7 +20,7 @@ app.use(require('express-ejs-layouts'))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(methodOverride('_method'))
-app.use(express.static(__dirname + '/public/'))
+app.use(express.static(__dirname + '/public/')) // case sensitive for public folder // transfer asset
 
 // DIY middleware
 // happens on every request

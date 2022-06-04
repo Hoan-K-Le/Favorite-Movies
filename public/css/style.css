@@ -79,8 +79,8 @@
       border-right: 2px solid lightblue;
       overflow: hidden;
       animation: animate 4s linear infinite;
-  }
-   */
+  } */
+  
   .indexH2::before {
       content: attr(data-text);
       position: absolute;
@@ -138,12 +138,9 @@
     list-style: none;
 }
 
-.detailsPage {
-    position: relative;
-}
 
-.mySecondDetails {
-    position: absolute;
+.detailsPage {
+    background: lightgray;
 }
 
 
