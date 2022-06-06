@@ -1,6 +1,16 @@
 ## Favorite Anime
 * You want to search up the anime and leave a comment on the page so other people can review it? Use this website where you can search up animes, and see what other people have commented about it!
 
+## Deployment Link
+https://anisearchz.herokuapp.com/
+
+## Installation Instructions
+* Fork and Clone this repository
+* npm i to install dependencies 
+* Need a env file to store your ENC_KEY
+* Nodemon to run the application(localhost:3000)
+* This application uses jikan API but does not need an API key
+
 ## ERD
 ![ERD](wireframe.png)
 

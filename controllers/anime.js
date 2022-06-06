@@ -5,6 +5,8 @@ const cryptoJS = require('crypto-js')
 const bcrypt = require('bcryptjs')
 const axios = require('axios')
 
+
+// grabs the api information and look for the results of the search engine
 router.get('/', async (req,res) => {
   setTimeout(async () => {
 
@@ -25,16 +27,9 @@ router.get('/', async (req,res) => {
   }, 600)
   })
   
-  // POST /anime -- Create new saved
-  // router.post('/', async (req, res) => {
-  //   await db.userAnime.create({
-  //     title: req.body.title,
-  //     mal_id: req.body.mal_id
-  //   })
-  //   res.redirect('/users/profile')
-  // })
+
   
-  
+  //  find the comment 
   router.get('/:id', async (req,res) => {
     try {
       const animeComment = await db.comment.findAll({
@@ -59,7 +54,7 @@ router.get('/', async (req,res) => {
     }
   })
 
-
+// creating comment on the details page
   router.post('/:id', async (req,res) => {
 
     try {
@@ -75,7 +70,7 @@ router.get('/', async (req,res) => {
       console.warn(err)
     }
   })
-
+// deleting the comments on the details page
   router.delete('/:id', async (req,res) => {
     try {
       const commentDelete = await db.comment.findOne({    
