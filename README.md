@@ -4,17 +4,6 @@
 ## ERD
 ![ERD](wireframe.png)
 
-sequelize model:create --name comment --attributes comment:text,userId:integer,animeId:integer
-
-sequelize model:create --name userAnime --attributes userId:integer,animeId:integer,favorite:string
-
-sequelize model:create --name anime --attributes title:string,name:string,userId:integer,animeId:integer
-
-
-
-
-
-
 
 ## API
 * https://api.jikan.moe/v4/anime?q=boruto
@@ -22,14 +11,20 @@ sequelize model:create --name anime --attributes title:string,name:string,userId
 
 | VERB | URL pattern | Action \(CRUD\) | Description |
 | :--- | :--- | :--- | :--- |
-| GET | / | Index \(Read\) | login site |
-| POST | / | CREATE \(CREATE\) | Create/Find the login |
-| GET | /signup | New \(Read\) | where you can sign up |
-| POST | /profile | Create \(Create\) | create your account and redirects to profile |
-| GET | /Search | New \(Read\) | a place where you can search your anime |
-| GET | /anime | Show \(Read\) | list of the movies |
-| PUT | /anime/:id | Update \(Update\) | the specific type of anime after you click one of the list |
-| DELETE | /profile | Destroy \(Delete\) | Deletes the anime that you have saved |
+| GET | / | Index | login site |
+| GET | /users/signup | Where you create an account | 
+| POST | /users/signup |  after you sign up it redirects to profile page |
+| GET | /users/login | A page where you log in |
+| POST| /users/login | After you login it will redirect you to profile page|
+| GET | /users/logout| A page where you log out |
+| GET | /users/profile | A page where it's your own personal profile |
+| POST | /users/profile | Creates the profile page | 
+| GET | /anime  | list of the movies |
+| GET | /anime/:id  | Details page of the anime you have searched |
+| GET | /anime/edit/:id  | Page where you can edit your comment |
+| PUT | /anime/edit | Updates your comment |
+| DELETE | /profile | Deletes the anime that you have saved |
+| DELETE | /anime/:id | Deletes the comment you have saved |
 
 ## User Views
 ![UserViews](FrontPage.png)
