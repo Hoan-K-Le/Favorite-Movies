@@ -10,6 +10,7 @@ https://anisearchz.herokuapp.com/
 * Need a env file to store your ENC_KEY
 * Nodemon to run the application(localhost:3000)
 * This application uses jikan API but does not need an API key
+* echo node_modules >> .gitignore
 
 ## ERD
 ![ERD](wireframe.png)
