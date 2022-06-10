@@ -133,7 +133,7 @@ router.post('/profile', async (req,res) => {
     }
 })
 
-//  a delete button for the save anime on the profile page
+//  a delete button for the save anime on the profile page  
 router.delete('/profile', async (req,res) => {
     try {
         const deletion = await db.anime.findOne({

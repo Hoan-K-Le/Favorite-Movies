@@ -11,6 +11,9 @@ https://anisearchz.herokuapp.com/
 * Nodemon to run the application(localhost:3000)
 * This application uses jikan API but does not need an API key
 * echo node_modules >> .gitignore
+* run sequelize db:create
+* connect to the db
+* run sequelize db:migrate
 
 ## ERD
 ![ERD](wireframe.png)
